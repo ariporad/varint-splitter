@@ -1,0 +1,72 @@
+{ "name": "simple-boilerplate"
+, "description": "A simple node module boilerplate"
+, "main": "dist/index.js"
+, "scripts":
+  { "prebuild": "npm run clean"
+  , "build": "babel --source-maps inline src --out-dir dist"
+  , "build:test": "babel --source-maps inline test --out-dir .test"
+  , "pretest": "npm run build && npm run build:test"
+  , "test": "npm run lint && ava .test"
+  , "test:cov": "nyc npm run test"
+  , "posttest:cov": "npm run check-cov"
+  , "check-cov": "nyc check-coverage --lines 90 --functions 90 --branches 90"
+  , "report": "nyc report --reporter=lcov"
+  , "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  , "lint": "eslint ."
+  , "clean": "rimraf dist .test coverage .nyc_output"
+  , "watch": "nodemon -w src -w test --exec \"npm run test\""
+  , "format-package": "format-json package.json | sponge package.json"
+  , "precommit": "npm run format-package && npm run test"
+  }
+, "repository":
+  { "type": "git"
+  , "url": "git+https://github.com/ariporad/simple-boilerplate.git"
+  }
+, "author":
+  { "name": "Ari Porad"
+  , "email": "ari@ariporad.com"
+  }
+, "devDependencies":
+  { "ava": "^0.9.1"
+  , "babel-cli": "^6.3.17"
+  , "babel-eslint": "^4.1.6"
+  , "babel-plugin-transform-runtime": "^6.3.13"
+  , "babel-preset-es2015": "^6.3.13"
+  , "babel-preset-stage-0": "^6.3.13"
+  , "coveralls": "^2.11.6"
+  , "cz-conventional-changelog": "^1.1.4"
+  , "eslint": "^1.10.1"
+  , "eslint-config-airbnb": "^2.1.1"
+  , "format-json": "1.0.3"
+  , "husky": "0.10.2"
+  , "nodemon": "^1.8.1"
+  , "nyc": "^5.0.0"
+  , "proxyquire": "^1.7.3"
+  , "rewire": "^2.5.0"
+  , "rimraf": "^2.5.0"
+  , "sponge": "0.1.0"
+  }
+, "license": "MIT"
+, "bugs":
+  { "url": "https://github.com/ariporad/simple-boilerplate/issues"
+  }
+, "homepage": "https://github.com/ariporad/simple-boilerplate#readme"
+, "config":
+  { "commitizen":
+    { "path": "node_modules/cz-conventional-changelog/"
+    }
+  , "nyc":
+    { "exclude":
+      [ ".test"
+      , "test"
+      , "src"
+      ]
+    , "include":
+      [ "dist/**/*.js"
+      ]
+    }
+  }
+, "publishConfig":
+  { "access": "public"
+  }
+}
