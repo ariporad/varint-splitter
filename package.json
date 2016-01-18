@@ -7,7 +7,7 @@
   , "build:test": "babel --source-maps inline test --out-dir .test"
   , "pretest": "npm run build && npm run build:test"
   , "test": "npm run lint && ava .test"
-  , "test:cov": "nyc npm run test"
+  , "test:cov": "npm run lint && nyc ava .test"
   , "posttest:cov": "npm run check-cov"
   , "check-cov": "nyc check-coverage --lines 90 --functions 90 --branches 90"
   , "report": "nyc report --reporter=lcov"
