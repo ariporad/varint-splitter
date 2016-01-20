@@ -78,7 +78,7 @@ Then send that.
 Then as far as the actual API goes:
 
 ```javascript
-import Splitter from 'varint-splitter`;
+import Splitter from 'varint-splitter';
 
 const socket = getTCPSocketSomehow();
 const splitter = new Splitter(); // This is the only thing that we export. It only does one thing.
