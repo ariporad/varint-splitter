@@ -17,10 +17,11 @@
   , "watch": "nodemon -w src -w test --exec \"npm run test\""
   , "format-package": "format-json package.json | sponge package.json"
   , "precommit": "npm run format-package && npm run test"
+  , "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   }
 , "repository":
   { "type": "git"
-  , "url": "git+https://github.com/ariporad/simple-boilerplate.git"
+  , "url": "https://github.com/ariporad/simple-boilerplate.git"
   }
 , "author":
   { "name": "Ari Porad"
@@ -45,6 +46,7 @@
   , "rewire": "^2.5.0"
   , "rimraf": "^2.5.0"
   , "sponge": "0.1.0"
+  , "semantic-release": "^4.3.5"
   }
 , "license": "MIT"
 , "bugs":
